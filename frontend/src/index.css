@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 *{
-  padding-top: 2px;
+  padding-top: 0px;
   margin: 0;
   box-sizing: border-box;
   font-family: outfit;
+  scroll-behavior: smooth;
+  margin-top: 2px;
 }
 body{
   min-height: 100vh;
