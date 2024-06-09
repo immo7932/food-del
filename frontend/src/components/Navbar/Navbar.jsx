@@ -38,7 +38,7 @@ import { StoreContext } from '../../context/StoreContext';
           <div className='navbar-profile'>
            <img src={assets.profile_icon}></img>
            <ul className='nav-profile-dropdown'>
-            <li><img src={assets.bag_icon}/><p>Order</p></li>
+            <li onClick={()=>navigate("/myorders")}><img src={assets.bag_icon}/><p>Order</p></li>
             <hr></hr>
             <li onClick={logout}><img src={assets.logout_icon}/><p>Logout</p></li>
            </ul>
