@@ -27,7 +27,7 @@ import { StoreContext } from '../../context/StoreContext';
     <div className="navbar-right">
        <img src={assets.search_icon}></img>
        <div className="navbar-search-icon">
-       <Link to={'/cart'}> <img src={assets.basket_icon}></img></Link>
+      {!token ? <img className='navbar-non-link' src={assets.basket_icon}></img>: <Link to={'/cart'}> <img src={assets.basket_icon}></img></Link> }
        
         <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
        </div>
