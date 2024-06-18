@@ -11,7 +11,7 @@ const StoreContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   const addToCart = async (itemId) => {
-    if (!cartItems[itemId]) {
+    if (!cartItems[itemId] && token !== "") {
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
     } else {
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
