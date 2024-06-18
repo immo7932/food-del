@@ -6,7 +6,7 @@ import parcel_icon from '../../assets/parcel_icon.png';  // Adjust the import ac
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
-  const url = "http://localhost:4000";
+  const url = "https://food-del-backend-2teu.onrender.com";
 
   const fetchAllOrders = async () => {
     try {
