@@ -21,7 +21,25 @@ const Navbar = ({ setShowLogin }) => {
 
   return (
     <div className='navbar'>
+<<<<<<< HEAD
       <Link to={'/'}> <img src={assets.logo} alt="Logo" className="logo" /></Link>
+=======
+    <Link to={'/'}> <img src={assets.logo} alt="Logo" className="logo" /></Link>
+     
+    <ul className="navbar-menu">
+      <Link to={'/'} onClick={()=>setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>
+      <a href='#explore-menu' onClick={()=>setMenu("menu")} className={menu === "menu" ? "active" : ""}>Menu</a>
+      <a href='#mobile-app' onClick={()=>setMenu("mobile-app")} className={menu === "mobile-app" ? "active" :""}>Mobile app</a>
+      <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>Contact Us</a>
+    </ul>
+    <div className="navbar-right">
+       <img src={assets.search_icon}></img>
+       <div className="navbar-search-icon">
+      {!token ? <img className='navbar-non-link' src={assets.basket_icon}></img>: <Link to={'/cart'}> <img src={assets.basket_icon}></img></Link> }
+       
+        <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
+       </div>
+>>>>>>> bdea561bb5a9e6c89fa3f52c69b923c83801eb68
 
       <ul className="navbar-menu">
         <Link to={'/'} onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>Home</Link>

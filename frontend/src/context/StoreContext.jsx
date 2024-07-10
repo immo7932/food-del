@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify'
 
+
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
@@ -12,6 +13,7 @@ const StoreContextProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
 
+<<<<<<< HEAD
   const notify = () => {
     toast("Please login to add items to the cart!");
   };
@@ -21,6 +23,11 @@ const StoreContextProvider = (props) => {
       notify();
     }
     else if (!cartItems[itemId] && token !== "") {
+=======
+  const addToCart = async (itemId) => {
+
+    if (!cartItems[itemId] && token !== "") {
+>>>>>>> bdea561bb5a9e6c89fa3f52c69b923c83801eb68
       setCartItems((prev) => ({ ...prev, [itemId]: 1 }));
     } else {
       setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));

@@ -3,7 +3,11 @@ import './List.css'
 import axios from 'axios'
 import { toast } from "react-toastify"
 const List = () => {
+<<<<<<< HEAD
   const url = "https://food-del-backend-2teu.onrender.com"
+=======
+const url = "https://food-del-backend-2teu.onrender.com"
+>>>>>>> bdea561bb5a9e6c89fa3f52c69b923c83801eb68
   const [list, setList] = useState([])
 
   const fetchList = async () => {

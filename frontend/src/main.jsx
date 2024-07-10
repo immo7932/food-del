@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import StoreContextProvider from './context/StoreContext.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <StoreContextProvider>
+       <StoreContextProvider>
             <App />
             <ToastContainer position="top-center" />
         </StoreContextProvider>

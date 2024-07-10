@@ -39,6 +39,11 @@ gap: 20px;
         
         }
 
+   .footer-content-right ul , .footer-content-center ul {
+       padding-left: 0px;
+        
+        }
+
 .footer-social-icons img{
 width: 40px;
 margin-right: 15px;
