@@ -96,6 +96,21 @@
     border-radius: 4px;
 }
 
+.cart-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  
+  .cart-empty h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
 @media (max-width: 750px) {
     .cart-bottom{
         flex-direction: column-reverse;

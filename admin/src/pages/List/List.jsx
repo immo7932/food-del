@@ -1,68 +1,68 @@
 import React, { useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios'
-import {toast} from "react-toastify"
+import { toast } from "react-toastify"
 const List = () => {
-const url = "http://localhost:4000"
+  const url = "https://food-del-backend-2teu.onrender.com"
   const [list, setList] = useState([])
 
-  const fetchList = async()=>{
-     const response = await axios.get(`${url}/api/food/list`);
+  const fetchList = async () => {
+    const response = await axios.get(`${url}/api/food/list`);
     // console.log(response.data)
-     if(response.data.success){
+    if (response.data.success) {
       setList(response.data.data)
-     }
-     else{
-        toast.error("Error")
-     }
+    }
+    else {
+      toast.error("Error")
+    }
   }
 
-  const revomeFood = async(foodid)=>{
-        const response =  await axios.post(`${url}/api/food/remove`, {id:foodid});
-        await fetchList();
-        if(response.data.success){
-          toast.success(response.data.message)
-        }
-       else {
-            toast.error("Error")
-        }
+  const revomeFood = async (foodid) => {
+    const response = await axios.post(`${url}/api/food/remove`, { id: foodid });
+    await fetchList();
+    if (response.data.success) {
+      toast.success(response.data.message)
+    }
+    else {
+      toast.error("Error")
+    }
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchList();
-  },[])
+  }, [])
 
 
   return (
     <div className='list add flex-col'>
-    <p>All Food List</p>
-    <div className='list-table'>
-      <div className='list-table-format title'>
-      <b>Image</b>
-      <b>Name</b>
-      <b>Category</b>
-      <b>Price</b>
-      <b>Action</b>
-      </div>
+      <p>All Food List</p>
+      <div className='list-table'>
+        <div className='list-table-format title'>
+          <b>Image</b>
+          <b>Name</b>
+          <b>Category</b>
+          <b>Price</b>
+          <b>Action</b>
+        </div>
 
-      {list.map((item, index)=>{
+        {list.map((item, index) => {
 
-        return (
-          <>
-            <div key={index} className='list-table-format'>
-                <img src={`${url}/images/`+item.image}></img>
+          return (
+            <>
+              <div key={index} className='list-table-format'>
+                <img src={`${url}/images/` + item.image}></img>
                 <p>{item.name}</p>
                 <p>{item.category}</p>
                 <p>${item.price}</p>
-                <p onClick={()=>revomeFood(item._id)} className='cursor'>X</p>
-            </div>
-          </>
-        )
+                <p onClick={() => revomeFood(item._id)} className='cursor'>X</p>
+              </div>
+            </>
+          )
 
-      })}
+        })}
 
-    </div>
+      </div>
     </div>
   )
 }
