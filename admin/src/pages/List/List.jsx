@@ -1,42 +1,44 @@
-import React, { useEffect, useState } from 'react'
-import './List.css'
-import axios from 'axios'
-import { toast } from "react-toastify"
+import React, { useEffect, useState } from 'react';
+import './List.css';
+import axios from 'axios';
+import { toast } from "react-toastify";
+
 const List = () => {
-<<<<<<< HEAD
-  const url = "https://food-del-backend-2teu.onrender.com"
-=======
-const url = "https://food-del-backend-2teu.onrender.com"
->>>>>>> bdea561bb5a9e6c89fa3f52c69b923c83801eb68
-  const [list, setList] = useState([])
+  const url = "https://food-del-backend-2teu.onrender.com";
+  const [list, setList] = useState([]);
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
-    // console.log(response.data)
-    if (response.data.success) {
-      setList(response.data.data)
+    try {
+      const response = await axios.get(`${url}/api/food/list`);
+      if (response.data.success) {
+        setList(response.data.data);
+      } else {
+        toast.error("Error fetching the list");
+      }
+    } catch (error) {
+      toast.error("An error occurred while fetching the list");
+      console.error("Error fetching the list:", error);
     }
-    else {
-      toast.error("Error")
-    }
-  }
+  };
 
-  const revomeFood = async (foodid) => {
-    const response = await axios.post(`${url}/api/food/remove`, { id: foodid });
-    await fetchList();
-    if (response.data.success) {
-      toast.success(response.data.message)
+  const removeFood = async (foodId) => {
+    try {
+      const response = await axios.post(`${url}/api/food/remove`, { id: foodId });
+      if (response.data.success) {
+        toast.success(response.data.message);
+        await fetchList();
+      } else {
+        toast.error("Error removing the food item");
+      }
+    } catch (error) {
+      toast.error("An error occurred while removing the food item");
+      console.error("Error removing the food item:", error);
     }
-    else {
-      toast.error("Error")
-    }
-
-  }
+  };
 
   useEffect(() => {
     fetchList();
-  }, [])
-
+  }, []);
 
   return (
     <div className='list add flex-col'>
@@ -50,25 +52,19 @@ const url = "https://food-del-backend-2teu.onrender.com"
           <b>Action</b>
         </div>
 
-        {list.map((item, index) => {
-
-          return (
-            <>
-              <div key={index} className='list-table-format'>
-                <img src={`${url}/images/` + item.image}></img>
-                <p>{item.name}</p>
-                <p>{item.category}</p>
-                <p>${item.price}</p>
-                <p onClick={() => revomeFood(item._id)} className='cursor'>X</p>
-              </div>
-            </>
-          )
-
-        })}
+        {list.map((item, index) => (
+          <div key={index} className='list-table-format'>
+            <img src={`${url}/images/${item.image}`} alt={item.name}></img>
+            <p>{item.name}</p>
+            <p>{item.category}</p>
+            <p>${item.price}</p>
+            <p onClick={() => removeFood(item._id)} className='cursor'>X</p>
+          </div>
+        ))}
 
       </div>
     </div>
-  )
+  );
 }
 
-export default List
+export default List;
