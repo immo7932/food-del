@@ -58,16 +58,10 @@ const Add = () => {
             <form className='flex-col' onSubmit={onSubmitHandler}>
                 <div className='add-img-upload flex-col'>
                     <p>Upload image</p>
-                    <label htmlFor='image'>
-                        <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt="Upload area" />
+                   <input onChange={(e) => { setImage(e.target.files[0]); e.target.value = '' }} type="file" accept="image/*" id="image" hidden />
+                    <label htmlFor="image">
+                        <img src={!image ? assets.upload_area : URL.createObjectURL(image)} alt="" />
                     </label>
-                    <input
-                        onChange={(e) => setImage(e.target.files[0])}
-                        type='file'
-                        id='image'
-                        hidden
-                        required
-                    />
                 </div>
 
                 <div className='add-product-name flex-col'>
