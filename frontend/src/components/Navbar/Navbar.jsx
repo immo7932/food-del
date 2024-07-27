@@ -32,6 +32,7 @@ const Navbar = ({ setShowLogin }) => {
       </ul>
 
       <div className="navbar-right">
+         <img src={assets.search_icon} alt="Search Icon" className="navbar-search-icon" />
         <div className="navbar-cart-icon">
           {!token ? (
             <img className='navbar-non-link' src={assets.basket_icon} alt="Basket Icon" onClick={notify} />
